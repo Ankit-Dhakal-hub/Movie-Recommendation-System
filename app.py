@@ -20,7 +20,7 @@ def fetch_poster(movie_id):
 def recommend(movie,n=5,movies=movies,indices=indices,cs=cs):
     idx = indices[movie]
     sim_scores = cs[idx]
-    movie_indices = sim_scores.argsort().flatten()[::-1][1:n+1]
+    movie_indices = sim_scores[0:n]
     rec_movies = movies['title'][movie_indices]
     movie_ids = movies['movie_id'][movie_indices].values
     posters = [fetch_poster(movie_id) for movie_id in movie_ids]
